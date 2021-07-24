@@ -1,0 +1,259 @@
+1.alaram_clock:
+---------------
+from datetime import datetime
+#from playsound import playsound
+alarm_time = input("Enter the time of alarm to be set:'HH:MM:SS AM/PM' formate:")
+alarm_hour=alarm_time[0:2]
+print(alarm_hour)
+alarm_minute=alarm_time[3:5]
+print(alarm_minute)
+alarm_seconds=alarm_time[6:8]
+print(alarm_seconds)
+alarm_period = alarm_time[9:11].upper()
+print(alarm_period)
+print("Setting up alaram..")
+
+while True:
+
+    now = datetime.now()
+    print(now)
+    current_hour = now.strftime("%H")
+    print(current_hour)
+    current_minute = now.strftime("%M")
+    print(current_minute)
+          
+    current_seconds = now.strftime("%S")
+    print(current_seconds)
+    
+    current_period = now.strftime("%p")
+    print(current_period)
+    if(alarm_period==current_period):
+        if(alarm_hour==current_hour):
+            if(alarm_minute==current_minute):
+                if(alarm_seconds==current_seconds):
+                    print("Wake Up!")
+                    break
+    
+2. email_slicer:
+--------------
+eg:
+==  txt = "     banana     "
+
+x = txt.strip()
+
+print("of all fruits", x, "is my favorite")
+
+
+
+
+eg:email = input("Enter your Email: ").strip()
+username = email[:email.index("@")]
+print(username)
+
+domain_name = email[email.index("@")+1:]
+print(domain_name)
+
+format = (f"your user name is '{username}' and your domain is '{domain_name}'")
+print(format)
+
+eg: strip():The strip() method removes any leading (spaces at the beginning) and trailing (spaces at the end) characters 
+---
+(space is the default leading character to remove)
+
+eg:slicer
+
+
+>>> word = "venkeychinthaisgoodboy"
+>>> word[0:7]
+'venkeyc'
+>>> word[0:7:2]
+'vnec'
+>>> word[7:15]
+'hinthais'
+>>> word[6:15]
+'chinthais'
+>>> word[-7:-1]
+'goodbo'
+>>> word[-7:0]
+''
+>>> word[-7:-0]
+''
+>>> word[-7:7]
+''
+>>> word[-9:-5]
+'isgo'
+>>> word[9:1:-1]
+'nihcyekn'
+>>> word[::-1]
+'yobdoogsiahtnihcyeknev'
+>>> word[-5]
+'o'
+>>> word.index('chintha')
+6
+>>> word.index('is')
+13
+>>> word[word.index('is'):word.index('boy')]
+'isgood'
+>>> word[word.index('chintha'):]
+'chinthaisgoodboy'
+>>> 
+
+
+3. Story Generator with python:
+==============================
+choice:The choice() method returns a randomly selected element from the specified sequence. The sequence can be  
+ -----       a string, a range, a list, a tuple or any other kind of sequence.
+
+eg:
+==: import random
+
+mylist = ["apple", "banana", "cherry"]
+
+print(random.choice(mylist))
+
+
+eg:
+==:
+import random
+when = ['A few years ago', 'Yesterday', 'Last night', 'A long time ago','On 20th Jan']
+who = ['a rabbit', 'an elephant', 'a mouse', 'a turtle','a cat']
+name = ['Ali', 'Miriam','daniel', 'Hoouk', 'Starwalker']
+residence = ['Barcelona','India', 'Germany', 'Venice', 'England']
+went = ['cinema', 'university','seminar', 'school', 'laundry']
+happened = ['made a lot of friends','Eats a burger', 'found a secret key', 'solved a mistery', 'wrote a book']
+print(random.choice(when) + ', ' + random.choice(who) + ' that lived in ' + random.choice(residence) + ', went to the ' + random.choice(went) + ' and ' + random.choice(happened))
+
+
+4.Create Acronyms using python:
+ ============================= 
+=> To create acronyms using Python, you need to write a python program that generates a short form of a word from a given sentence. You can do this by splitting and
+ indexing to get the first word and then combine it. Let’s see how to create an acronym using Python
+
+1.
+user_input = str(input("Enter a Phrase: "))
+text = user_input.split()
+a = " "
+for i in text:
+    a = a+str(i[0]).upper()
+print(a)
+
+5.python program Generate a password
+ ===================================:
+=>random: Python has a built-in module that you can use to make random numbers.
+
+eg:
+--
+import random
+my_list = ['apple','banana','orange']
+print(random.sample(my_list, k=2))
+
+-> Here k means how many numbers or words you want from my_list
+ouput:[orage, apple] here you get two values in list because we use k=2 that why. when use k=1 then you get only one value from the list
+-> The sample() method returns a list with a randomly selection of a specified number of items from a sequnce.
+
+prgm:
+----
+import random
+passlen = int(input("enter the length of password"))
+s="abcdefghijklmnopqrstuvwxyz01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()?"
+p="".join(random.sample(s,passlen ))
+print(p)
+
+
+6.Rock, Paper, Scissors:
+========================
+prgrm:
+
+import random
+choices = ["Rock", "Paper", "Scissors"]
+computer = random.choice(choices)
+
+#player = False
+cpu_score = 0
+player_score = 0
+
+while True:
+    player = input("Rock, Paper, Scissors?").capitalize()
+    print(player)
+
+    ## Conditions for rock, paper, scissor
+    if computer == player:
+        print("Tie!")
+    elif player == "Rock":
+        if computer == "Paper":
+            print('You lose!', computer, "covers", player)
+            cpu_score +=1
+        else:
+            print('You win!', player, "smashes", computer)
+            player_score +=1
+    elif player == "Paper":
+        if computer == "Scissors":
+            print('You lose!', computer, "cut", player)
+            cpu_score +=1
+        else:
+            print('You win!', player, "covers", computer)
+            player_score +=1
+    elif player == "Scissors":
+        if computer == "Rock":
+            print('You lose!', computer, "smashes", player)
+            cpu_score +=1
+        else:
+            print('You win!', player, "cut", computer)
+            player_score +=1
+    elif player == "End":
+        if player_score > cpu_score:
+            print("player win")
+        elif player_score == cpu_score:
+            print('match tie')
+        else:
+            print('cpu win')
+        print("Final score:")
+        print(f"CPU:{cpu_score}")
+        print(f"Player:{player_score}")
+        break
+  
+eg:
+== : Upper case the first letter in this sentence
+
+txt = "hello, and welcome to my world."
+x = txt.capitalize()
+print(x)
+
+ouput =Hello, and welcome to my world.
+
+->The capitalize() method returns a string where the first character is upper case. 
+              
+        
+7.Dice Roll simulator with python:
+=================================:
+prgm:
+====
+
+#importing module for random number generation
+import random
+
+#range of the values of a dice
+min_val = 1
+max_val = 6
+
+#to loop the rolling through user input
+roll_again = "yes"
+
+#loop
+while roll_again == "yes" or roll_again == "y":
+    print("Rolling The Dices...")
+    print("The Values are :")
+    
+    #generating and printing 1st random integer from 1 to 6
+    print(random.randint(min_val, max_val))
+    
+    #generating and printing 2nd random integer from 1 to 6
+    print(random.randint(min_val, max_val))
+    
+    #asking user to roll the dice again. Any input other than yes or y will terminate the loop
+    roll_again = input("Roll the Dices Again?")     
+            
+
+
+
+
